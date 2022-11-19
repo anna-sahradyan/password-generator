@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
     root: {
@@ -12,7 +12,6 @@ export default makeStyles((theme) => ({
     form: {
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "center",
     },
     fileInput: {
         width: "97%",
@@ -21,4 +20,6 @@ export default makeStyles((theme) => ({
     buttonSubmit: {
         marginBottom: 10,
     },
+
+
 }));

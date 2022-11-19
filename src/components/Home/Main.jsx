@@ -1,12 +1,15 @@
 import React from 'react';
-import {Button, Paper, TextField, Typography} from "@material-ui/core";
 import useStyles from "./mainStyle";
-import FileBase from "react-file-base64";
+import {styled} from '@mui/material/styles';
+import {Button, Checkbox, FormControlLabel, FormGroup, Grid, Paper, TextField, Typography} from "@material-ui/core";
+
 const Main = () => {
     const classes = useStyles();
     const handelSubmit = () => {
 
     }
+
+    const label = {inputProps: {'aria-label': 'Checkbox demo'}};
     return (
         <>
             <Paper className={classes.paper}>
@@ -16,67 +19,54 @@ const Main = () => {
                     className={`${classes.form} ${classes.root}`}
                     onSubmit={handelSubmit}
                 >
-                    <Typography variant={"h6"}>
+                    <Typography variant={"h6"} style={{margin: "auto"}}>
                         {/*{currentId ? "Editing" : "Creating"} a Memory*/}
+                        Password Generator
                     </Typography>
                     <TextField
-                        name={"title"}
+                        name={"passwordGenerate"}
                         variant={"outlined"}
-                        label={"Title"}
+                        type="text"
+                        label={"Generate Password"}
                         fullWidth
-                        value={""}
-                        // onChange={(e) => setPostData({...postData, title: e.target.value})}
-                    />{" "}
-                    <TextField
-                        name={"message"}
-                        variant={"outlined"}
-                        label={"Message"}
-                        fullWidth
-                        multiline
-                        minRows={4}
-                        value={""}
-                        // onChange={(e) =>
-                        //     setPostData({...postData, message: e.target.value})
-                        // }
-                    />{" "}
-                    <TextField
-                        name={"tags"}
-                        variant={"outlined"}
-                        label={"Tags"}
-                        fullWidth
-                        value={""}
-                        // onChange={(e) =>
-                        //     setPostData({...postData, tags: e.target.value.split(",")})
-                        // }
+                        // value={""}
                     />
-                    <div className={classes.fileInput}>
-                        <FileBase
-                            type={"file"}
-                            multiple={false}
-                            // onDone={({base64}) =>
-                            //     setPostData({...postData, selectedFile: base64})
-                            // }
-                        />
+                    <TextField
+                        name={"number"}
+                        variant={"outlined"}
+                        type="number"
+                        label={"length"}
+                        fullWidth
+                        // value={""}
+
+
+                    />
+                    <TextField
+                        name={"symbol"}
+                        variant={"outlined"}
+                        type="text"
+                        label={"Symbol"}
+                        fullWidth
+                        // value={""}
+
+                    />
+                    <div>
+                        <FormGroup>
+                            <FormControlLabel control={<Checkbox defaultChecked />} label="Label"style={{position:"relative",top:"4px",left:"115px"}} />
+                            <TextField style={{position:"absolute",top:"300px",width:"346px"}}
+                                name={"symbol"}
+                                variant={"outlined"}
+                                type="text"
+                                fullWidth
+                                // value={""}
+
+                            />
+
+                        </FormGroup>
                     </div>
-                    <Button
-                        className={classes.buttonSubmit}
-                        variant={"contained"}
-                        color={"primary"}
-                        size={"large"}
-                        type={"submit"}
-                        fullWidth
-                    >
-                        Submit
-                    </Button>
-                    <Button
-                        variant={"contained"}
-                        color={"secondary"}
-                        size={"small"}
-                        // onClick={clear}
-                        fullWidth
-                    >
-                        Clear
-                    </Button>
+
+
+
                 </form>
             </Paper>
         </>
