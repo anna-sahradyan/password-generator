@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import useStyles from "./mainStyle";
 import {Button, Checkbox, FormControlLabel, FormGroup, Paper, TextField, Typography} from "@material-ui/core";
+import {PasswordService} from "../PasswordService";
 
 const Main = () => {
     const classes = useStyles();
@@ -11,8 +12,9 @@ const Main = () => {
     })
     const handelSubmit = (e) => {
         e.preventDefault();
-
-        console.log(lowerLetter)
+        let passwordObj = PasswordService.getPasswordObj(state);
+        let newPassword = PasswordService.generatePassword(passwordObj,state.passwordLength);
+            console.log(newPassword)
     }
     const updateInput = (e) => {
         setState({
@@ -44,6 +46,7 @@ const Main = () => {
                     fullWidth
                     value={state.passwordGenerate}
                     onChange={updateInput}
+                    required={true}
                 />
                 <TextField
                     name={"passwordLength"}
@@ -59,8 +62,8 @@ const Main = () => {
 
                 <div>
                     <FormGroup>
-                        <FormControlLabel control={<Checkbox disabled={true}
-                                                             onChange={updateCheck}
+                        <FormControlLabel control={<Checkbox
+                            onChange={updateCheck} name={"symbol"}
                         />}
                                           style={{position: "relative", top: "20px", left: "300px"}}/>
                         <TextField style={{position: "absolute", top: "240px", width: "350px"}}
@@ -69,9 +72,10 @@ const Main = () => {
                                    type="text"
                                    label={"Symbols"}
                                    fullWidth
+                                   disabled={true}
                         />
-                        <FormControlLabel control={<Checkbox disabled={true}
-                                                             onChange={updateCheck}
+                        <FormControlLabel control={<Checkbox
+                            onChange={updateCheck} name={"number"}
                         />}
                                           style={{position: "relative", top: "50px", left: "300px"}}/>
                         <TextField style={{position: "absolute", top: "310px", width: "350px"}}
@@ -80,10 +84,10 @@ const Main = () => {
                                    label="Numbers"
                                    type="number"
                                    fullWidth
-                                   onChange={updateCheck}
+                                   disabled={true}
 
                         />
-                        <FormControlLabel control={<Checkbox disabled={true}/>}
+                        <FormControlLabel control={<Checkbox name={"lowercase"} onChange={updateCheck}/>}
                                           style={{position: "relative", top: "75px", left: "300px"}}/>
                         <TextField style={{position: "absolute", top: "380px", width: "350px"}}
                                    name={"lowercase"}
@@ -91,10 +95,10 @@ const Main = () => {
                                    type="text"
                                    label=" Lowercase Letters"
                                    fullWidth
-                                   onChange={updateCheck}
+                                   disabled={true}
 
                         />
-                        <FormControlLabel control={<Checkbox disabled={true}/>}
+                        <FormControlLabel control={<Checkbox onChange={updateCheck} name={"uppercase"}/>}
                                           style={{position: "relative", top: "103px", left: "300px"}}/>
                         <TextField style={{position: "absolute", top: "450px", width: "350px"}}
                                    name={"uppercase"}
@@ -102,7 +106,7 @@ const Main = () => {
                                    type="text"
                                    label="Uppercase Letter"
                                    fullWidth
-                                   onChange={updateCheck}
+                                   disabled={true}
 
                         />
 
