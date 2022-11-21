@@ -14,7 +14,8 @@ const Main = () => {
         e.preventDefault();
         let passwordObj = PasswordService.getPasswordObj(state);
         let newPassword = PasswordService.generatePassword(passwordObj,state.passwordLength);
-            console.log(newPassword)
+        setState({...state,passwordGenerate:newPassword})
+
     }
     const updateInput = (e) => {
         setState({
